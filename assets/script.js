@@ -1,4 +1,12 @@
-//insert weather API Key
+//TO DO: set up event listener for button to produce results on clicking
+
+//TO DO: connect API key to search bar to populate search query
+
+//TO DO: display 5 day forcast and current forecast for the city chosen
+
+//TO DO: Append the previous searches to the page using local storage
+
+
 
 //weather API Key
 var APIKey = "4af337e04f29675ecae50ddb8a8e1565";
