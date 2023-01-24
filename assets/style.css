@@ -1,0 +1,15 @@
+ header {
+    font-family: 'Montserrat', sans-serif;
+background-color: darkblue;
+color: aliceblue;
+ }
+
+ #search-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    font-weight: 7000;
+ }
+
+ .form-control {
+    size: .25%;
+ }
