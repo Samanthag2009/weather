@@ -6,7 +6,7 @@
 
 //TO DO: Append the previous searches to the page using local storage
 
-
+$(document).ready(function (){  
 
 //weather API Key
 var APIKey = "4af337e04f29675ecae50ddb8a8e1565";
@@ -15,21 +15,41 @@ var prevSearches = [];
 
 //collect user input for city name 
 
-var cityName = document.getElementById("search-input").value;
+var cityName = $("#search-input").value;
+
 
 var currentWeather = function(e) {
 //fetching data from API
 e.preventDefault();
 console.log("aaaaaaaaa")
 
-    fetch("http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={APIKey}")
+let coords = [];
+
+
+$.ajax({
+
+url: "https://api.openweathermap.org/data/2.5/weather?q=austin&appid=4af337e04f29675ecae50ddb8a8e1565",  /*+ cityName + "&appid=" + APIKey,*/ 
+method: "GET", 
+
+})
     
     //turn response into strings
 
     .then(response => {
-    return response.json();     
-    
-    })
+    coords.push(response.coord.lat);    
+    coords.push(response.coord.lon);
+
+    let city = response.name;
+    let icon = response.weather[0].icon;
+    let temp = response.main.temp;
+    let hum = response.main.humidity;
+
+$("#current-city").text(city);
+$("#current-temp").text("Temperature: " + temp);
+
+})
+
+
 
     //get data for the current weather section
 
@@ -82,3 +102,5 @@ document.getElementById("weather-form").addEventListener("submit", currentWeathe
 
 
 //)
+
+});
