@@ -10,6 +10,18 @@ color: aliceblue;
     font-weight: 7000;
  }
 
- .form-control {
-    size: .25%;
+ #search-input{
+    margin: 0;
+    width: 20%;
+    align-self: left;
+
+
+ }
+
+ #current-weather {
+    display: flex;
+    border-color: blue;
+    border-style: solid;
+    align-self: right;
+    width: 300px;
  }

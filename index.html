@@ -5,8 +5,7 @@
    
     <title>Weather App</title>
 
-    <!--JQuery-->
-    <script src="jquery-3.6.1.min.js"></script>
+
     <!--BootStrap-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--Google Font-->
@@ -18,19 +17,79 @@
 
  <header><h1>Weather App</h1></header>
 
-<!--TODO Create Search for a City search bar-->
-<form>
+<!--Search for a City search bar-->
+<form id="weather-form">
 
     <div class="form-group">
       <label for="input-search" id="search-title">Search For a City</label>
-      <input type="text" class="form-control" id="searchinput" placeholder="Search for a City">
+      <input type="text" class="form-control" id="search-input" placeholder="Search for a City">
     </div>
 
     <button type="submit" class="btn btn-primary">Search</button>
   </form>
 
-<!--TODO Create styles for Saved results, 5-Day Forecast, and current forecast for city-->
+  <!--current weather container-->
+  <div class="current-weather" id="current-weather">
 
+    <div class="current-container">
+<h2 id="title" class="title d-inline">Currently</h2>
+
+    </div>
+<!--Temperature-->
+<p class="current-temp" id="current-temp"></p>
+<!--Wind-->
+<p class="current-wind" id="current-wind"></p>
+<!--humidity-->
+<p class="current-hum" id="current-hum"></p>
+
+  </div>
+
+  <!--Forecast-->
+<div class="future future-forecast future-container">
+
+<!--title-->
+<h2 class="future-title align-center" id="future-title">5-Day Forecast</h2>
+<div id="card-container" class="card-container d-flex justify-content-betwwen">
+<!---Forecast Cards-->
+
+<div class="future-card">
+<p class="future-date" id="future-date-1"></p>
+<p class="future-temp" id="future-temp-1"></p>
+<p class="future-wind" id="future-wind-1"></p>
+<p class="future-hum" id="future-hum-1"></p>
+</div>
+<div class="future-card">
+    <p class="future-date" id="future-date-2"></p>
+    <p class="future-temp" id="future-temp-2"></p>
+    <p class="future-wind" id="future-wind-2"></p>
+    <p class="future-hum" id="future-hum-2"></p>
+    </div>
+    <div class="future-card">
+        <p class="future-date" id="future-date-3"></p>
+        <p class="future-temp" id="future-temp-3"></p>
+        <p class="future-wind" id="future-wind-3"></p>
+        <p class="future-hum" id="future-hum-3"></p>
+        </div>
+        <div class="future-card">
+            <p class="future-date" id="future-date-4"></p>
+            <p class="future-temp" id="future-temp-4"></p>
+            <p class="future-wind" id="future-wind-4"></p>
+            <p class="future-hum" id="future-hum-4"></p>
+            </div>
+            <div class="future-card">
+                <p class="future-date" id="future-date-5"></p>
+                <p class="future-temp" id="future-temp-5"></p>
+                <p class="future-wind" id="future-wind-5"></p>
+                <p class="future-hum" id="future-hum-5"></p>
+                </div>
+
+</div>
+
+</div>
+
+<!--TODO Create styles for Saved results, 5-Day Forecast, and current forecast for city-->
+<!--JQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="./assets/script.js"></script>
   </body>
 </html>

@@ -11,17 +11,57 @@
 //weather API Key
 var APIKey = "4af337e04f29675ecae50ddb8a8e1565";
 
+var prevSearches = [];
+
 //collect user input for city name 
 
-var city;
+var cityName = document.getElementById("search-input").value;
 
-//query URL for API call
+var currentWeather = function(e) {
+//fetching data from API
+e.preventDefault();
+console.log("aaaaaaaaa")
 
-var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
+    fetch("http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={APIKey}")
+    
+    //turn response into strings
 
-//fetch query url
+    .then(response => {
+    return response.json();     
+    
+    })
 
-fetch(query)
+    //get data for the current weather section
+
+    .then(function(response) {
+
+        (cityName);
+
+    //adding current weather visuals to page
+
+        var currentWeatherBox = $("#current-weather");
+
+        var currentTitle = $("#title");
+        
+        var currentTemp = $("#current-temp");
+        currentTemp.text("Temperature: " + response.current.temp);
+
+        var currentWind = $("current-wind");
+        currentWind.text("Wind Speed: " + response.current.wind_speed + "MPH");
+        
+        var currentHum = $("current-hum");
+        currentHum.text("Humidity: " + response.currend.humidity + "%");
+
+        // add current temperature to page
+
+
+    }
+    
+    )
+
+}
+
+document.getElementById("weather-form").addEventListener("submit", currentWeather);
 
 //enable local search
 
@@ -31,4 +71,14 @@ fetch(query)
 
 //display 5 day forecast
 
-//
+//search form submitted
+
+//click submit, then search for city name, then show it
+//$(search-form).on("submit", function() {
+ //   event.preventDefault;
+
+
+//}
+
+
+//)
