@@ -11,6 +11,10 @@
     <!--Google Font-->
     <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Montserrat:wght@100;300;400&family=Moon+Dance&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/style.css">
+    <!--Dayjs-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+    ></script>
     
   </head>
   <body>
@@ -18,6 +22,8 @@
  <header><h1>Weather App</h1></header>
 
 <!--Search for a City search bar-->
+
+<div class="form-container d-flex">
 <form id="weather-form">
 
     <div class="form-group">
@@ -27,14 +33,20 @@
 
     <button type="submit" class="btn btn-primary">Search</button>
   </form>
+</div>
+  <!---Stored Cities-->
+
+  <ul class="stored-cities" id="stored-cities"></ul>
 
   <!--current weather container-->
-  <div class="current-weather" id="current-weather">
+  <div class="current-weather align-top float-middle float-sm-right .mx-auto" id="current-weather">
 
-    <div class="current-container">
+    
 <h2 id="title" class="title d-inline">Currently</h2>
-
-    </div>
+<div class="current-container align-center justify-center">
+    
+    <!--Date-->
+    <p class="current-date" id="current-date"></p>
     <!--City-->
 <p class="current-city" id="current-city"></p>
 <!--Temperature-->
@@ -43,14 +55,15 @@
 <p class="current-wind" id="current-wind"></p>
 <!--humidity-->
 <p class="current-hum" id="current-hum"></p>
-
+</div>
   </div>
 
   <!--Forecast-->
 <div class="future future-forecast future-container">
 
 <!--title-->
-<h2 class="future-title align-center" id="future-title">5-Day Forecast</h2>
+<div class="forecast-container">
+<h2 class="future-title justify-center" id="future-title">5-Day Forecast</h2>
 <div id="card-container" class="card-container d-flex justify-content-betwwen">
 <!---Forecast Cards-->
 
@@ -84,14 +97,14 @@
                 <p class="future-wind" id="future-wind-5"></p>
                 <p class="future-hum" id="future-hum-5"></p>
                 </div>
+</div>         
 
-</div>
+    </div>
 
-</div>
+        </div>
 
-<!--TODO Create styles for Saved results, 5-Day Forecast, and current forecast for city-->
-<!--JQuery-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="./assets/script.js"></script>
-  </body>
+    <!--JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="./assets/script.js"></script>
+      </body>
 </html>

@@ -1,106 +1,104 @@
 //TO DO: set up event listener for button to produce results on clicking
 
-//TO DO: connect API key to search bar to populate search query
+//TO DO: connect API key to search bar to include all cities
 
 //TO DO: display 5 day forcast and current forecast for the city chosen
 
 //TO DO: Append the previous searches to the page using local storage
 
-$(document).ready(function (){  
+$(document).ready(function() {  
 
-//weather API Key
-var APIKey = "4af337e04f29675ecae50ddb8a8e1565";
+//let currentDate = $('#current-date').text(today.format('MMMM DD, YYYY'));
 
-var prevSearches = [];
+//let day1Date = 
 
-//collect user input for city name 
+        //weather API Key
+        var APIKey = "4af337e04f29675ecae50ddb8a8e1565";
 
-var cityName = $("#search-input").value;
+        var prevSearches = [];
 
+        //collect user input for city name 
 
-var currentWeather = function(e) {
-//fetching data from API
-e.preventDefault();
-console.log("aaaaaaaaa")
+    var cityName = $("#search-input").value;
 
-let coords = [];
+        function findWeather() {
+            //fetching data from API
 
-
-$.ajax({
-
-url: "https://api.openweathermap.org/data/2.5/weather?q=austin&appid=4af337e04f29675ecae50ddb8a8e1565",  /*+ cityName + "&appid=" + APIKey,*/ 
-method: "GET", 
-
-})
-    
-    //turn response into strings
-
-    .then(response => {
-    coords.push(response.coord.lat);    
-    coords.push(response.coord.lon);
-
-    let city = response.name;
-    let icon = response.weather[0].icon;
-    let temp = response.main.temp;
-    let hum = response.main.humidity;
-
-$("#current-city").text(city);
-$("#current-temp").text("Temperature: " + temp);
-
-})
-
-
-
-    //get data for the current weather section
-
-    .then(function(response) {
-
-        (cityName);
-
-    //adding current weather visuals to page
-
-        var currentWeatherBox = $("#current-weather");
-
-        var currentTitle = $("#title");
+            console.log("aaaaaaaaa")
         
-        var currentTemp = $("#current-temp");
-        currentTemp.text("Temperature: " + response.current.temp);
-
-        var currentWind = $("current-wind");
-        currentWind.text("Wind Speed: " + response.current.wind_speed + "MPH");
+            let coords = [];
         
-        var currentHum = $("current-hum");
-        currentHum.text("Humidity: " + response.currend.humidity + "%");
+        
+            $.ajax({
+            
+            
+                url: "https://api.openweathermap.org/data/2.5/weather?q=austin&appid=4af337e04f29675ecae50ddb8a8e1565",  /*+ cityName + "&appid=" + APIKey&units=imperial,*/ 
+                method: "GET", 
+            
+            }).then(response => {
+                coords.push(response.coord.lat);    
+                coords.push(response.coord.lon);
+            
+                let city = response.name;
+                let icon = response.weather[0].icon;
+                let temp = response.main.temp;
+                let wind = response.wind.speed;
+                let hum = response.main.humidity;
+               
+                
+                //$('#current-date').text(today.format('MMMM DD, YYYY'));
+                $("#current-city").text(city);
+                $("#current-temp").text("Temperature: " + temp);
+                $("#icon").html(`<img src="http://openweathermap.org/img/wn/${icon}@2x.png">`);
+                $("#current-wind").text("Wind Speed: " + wind + "MPH" );
+                $("#current-hum").text("Humidity: " + hum + "%");
+            
+                console.log("WTF MAN")
+                
+                var cityName = $("#search-input").val();
 
-        // add current temperature to page
+                if (cityName === "") {
+                    alert("Whoops, that's not a city!");
+                    e.preventDefault();
+                } else {
+                    findWeather(cityName);
+                }
 
 
-    }
-    
-    )
+            })
+        }
+            findWeather();
 
-}
+let cityHistory = JSON.parse(localStorage.getItem("city")) || [];
 
-document.getElementById("weather-form").addEventListener("submit", currentWeather);
-
-//enable local search
-
-//save results to local storage
-
-//display saved results
-
-//display 5 day forecast
-
-//search form submitted
-
-//click submit, then search for city name, then show it
-//$(search-form).on("submit", function() {
- //   event.preventDefault;
-
-
-//}
-
-
-//)
+//ignore portion of array that's already renderd
+//$(#stored-cities).html("")''
+ 
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
