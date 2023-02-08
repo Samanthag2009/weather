@@ -8,8 +8,32 @@
 
 $(document).ready(function() {  
 
-//Code below is the beginning of Dayjs integration
+    let cityHistory = JSON.parse(localStorage.getItem("city")) || [];
 
+   $(".btn").on("click", (event) => {
+   event.preventDefault();  
+
+   getCityName()
+   
+   localStorage.setItem('City', JSON.stringify(cityHistory))
+   
+});
+//Code below is the beginning of Dayjs integration
+//function for find city name
+function getCityName() {
+    var cityName = $("#search-input").val();
+    if (cityName === "") {
+       
+        alert("Whoops, that's not a city!");
+         
+     } else {
+         findWeather(cityName);
+
+
+    console.log(cityName)
+}
+
+}
 //let currentDate = $('#current-date').text(today.format('MMMM DD, YYYY'));
 
 //let day1Date = 
@@ -21,9 +45,10 @@ $(document).ready(function() {
 
         //collect user input for city name 
 
+
 // Code written in Tutoring
 // update hardcoded city to be search input
-fetch('https://api.openweathermap.org/data/2.5/forecast?q=austin&appid=4af337e04f29675ecae50ddb8a8e1565')
+fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=4af337e04f29675ecae50ddb8a8e1565')
     .then(res => res.json())
     .then(data => {
         const forecastCard = document.getElementById('forecast-card')
@@ -82,21 +107,15 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=austin&appid=4af337e04
             
                 console.log("WTF MAN")
                 
-                var cityName = $("#search-input").val();
+            
 
-                if (cityName === "") {
-                    alert("Whoops, that's not a city!");
-                    e.preventDefault();
-                } else {
-                    findWeather(cityName);
-                }
+            
 
 
             })
         }
             findWeather();
 
-let cityHistory = JSON.parse(localStorage.getItem("city")) || [];
 
 //ignore portion of array that's already renderd
 //$(#stored-cities).html("")''
